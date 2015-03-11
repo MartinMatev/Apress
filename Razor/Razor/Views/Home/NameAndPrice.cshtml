@@ -1,0 +1,10 @@
+﻿@model Razor.Models.Product
+
+@{
+    ViewBag.Title = @Model.Name;
+    Layout = "~/Views/_BasicLayout.cshtml";
+}
+
+<h2>Name and Price</h2>
+The product name is @Model.Name and it costs $@Model.Price
+
