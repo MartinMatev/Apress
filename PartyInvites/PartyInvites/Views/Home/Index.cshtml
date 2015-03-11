@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="~/Content/Styles.css" rel="stylesheet" />
+    <title>Index</title>
+    <style>
+        .btn a { color: white; text-decoration:none }
+        body { background-color: #F1F1F1; }
+    </style>
+</head>
+<body>
+    <div class="text-center">
+        <h1>@ViewBag.Greeting infidel</h1>
+        <h2>We are having a party for all of the cool kids in school.</h2>
+        <h3>If you happen to be one of those, please come by.<br />
+            We have alcohol and stuff.</h3>
+        <div class="btn btn-success">
+                        
+            <!-- ActionLink method takes two parameters:
+            the first is the text to display in the link,
+            and the second is the action to perform when the user clicks the link. -->
+            @Html.ActionLink("RSPV Now", "RspvForm")
+        </div> 
+        
+    </div>
+</body>
+</html>
