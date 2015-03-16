@@ -34,18 +34,6 @@ namespace SportsStore.WebUI.Infrastructure
         {
             // BINDINGS GO HERE
             kernel.Bind<IProductsRepository>().To<EFProductRepository>();
-
-
-            // MOCK BINDINGS
-            //var mock = new Mock<IProductsRepository>();
-            //mock.Setup(m => m.Products).Returns(new List<Product>
-            //{
-            //    new Product {Name = "Footbal", Price = 25},
-            //    new Product {Name = "Surf board", Price = 179},
-            //    new Product {Name = "Running shoes", Price = 95},
-            //});
-
-            //kernel.Bind<IProductsRepository>().ToConstant(mock.Object);
         }
     }
 }
