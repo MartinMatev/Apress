@@ -1,10 +1,12 @@
 ﻿using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Entities;
 
 namespace SportsStore.WebUI.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private IProductsRepository repository;
@@ -25,8 +27,13 @@ namespace SportsStore.WebUI.Controllers
             return View(product);
         }
 
+        public ViewResult Create()
+        {
+            return View("Edit", new Product());
+        }
+
         [HttpPost]
-        public ActionResult Edit(Product product)
+        public ActionResult Edit(Product product, HttpPostedFileBase image = null)
         {
             /*
             ModelState.IsValid tells you if any model errors have been added to ModelState.
@@ -35,6 +42,12 @@ namespace SportsStore.WebUI.Controllers
              */
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    product.ImageMimeType = image.ContentType;
+                    product.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(product.ImageData, 0, image.ContentLength);
+                }
                 repository.SaveProduct(product);
                 TempData["message"] = string.Format("{0} has been saved.", product.Name);
 
@@ -45,6 +58,19 @@ namespace SportsStore.WebUI.Controllers
                 // there is something wrong with the data values
                 return View(product);
             }
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int productId)
+        {
+            // Call the DeleteProduct method from the SportsStore.Domain/EFProductRepository
+            Product deletedProduct = repository.DeleteProduct(productId);
+            if (deletedProduct != null)
+            {
+                TempData["message"] = string.Format("{0} was deleted!", deletedProduct.Name);
+            }
+
+            return RedirectToAction("Index");
         }
 	}
 }

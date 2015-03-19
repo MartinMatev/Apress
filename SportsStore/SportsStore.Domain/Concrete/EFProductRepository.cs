@@ -31,10 +31,25 @@ namespace SportsStore.Domain.Concrete
                     dbEntry.Description = product.Description;
                     dbEntry.Price = product.Price;
                     dbEntry.Category = product.Category;
+                    dbEntry.ImageMimeType = product.ImageMimeType;
+                    dbEntry.ImageData = product.ImageData;
                 }
             }
 
             context.SaveChanges();
+        }
+
+        public Product DeleteProduct(int productID)
+        {
+            Product dbEntry = context.Products.Find(productID);
+
+            if (dbEntry != null)
+            {
+                context.Products.Remove(dbEntry);
+                context.SaveChanges();
+            }
+
+            return dbEntry;
         }
     }
 }
