@@ -1,0 +1,28 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActionName</title>
+</head>
+<body>
+    <div>The controller is: @ViewBag.Controller</div>
+    <div>The action is: @ViewBag.Action</div>
+    <div>The custom variable is: @ViewBag.CustomVariable</div>
+    @if (ViewBag.Caught != null)
+    {
+        foreach (var segment in ViewBag.Caught)
+        {
+            <div>Caugh a segment: @segment</div>
+        }
+    }
+    <div>
+        @Html.ActionLink("Go back to the Home/Index page", "Index")
+    </div>
+</body>
+</html>
+

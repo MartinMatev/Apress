@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActionName</title>
+</head>
+<body>
+    <div>The controller is: @ViewBag.Controller</div>
+    <div>The action is: @ViewBag.Action</div>
+    @*<div>
+        @Html.ActionLink("Facebook", "Index", "Home", "https", "facebook.com", "martin.matev.37",
+        new { id = "MyId" },
+        new { id = "myAnchorID", @class = "myCSSClass" })
+    </div>*@
+    <div>
+        This is a url:
+        @Url.Action("Index", "Home", new { id = "MyID" })
+    </div>
+    <div>
+        @* The below code renders: <a class="myCSSClass" href="/" id="myAnchorID">This is an outgoing URL</a>*@
+        @Html.ActionLink("This is an outgoing URL", "CustomVariable", "Home", null, new { id = "myAnchorID", @class = "myCSSClass" })
+    </div>
+    <div>
+        @Html.ActionLink("This targets another controller", "Index", "Customer")
+    </div>
+    <div>
+        This is a Legacy URL:
+        @Html.ActionLink("Click me feg", "GetLegacyURL", new { legacyURL = "~/articles/Windows_3.1_Overview.html" })
+    </div>
+</body>
+</html>

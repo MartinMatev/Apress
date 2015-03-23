@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <h2>Admin Area Index</h2>
+    </div>
+    <div>
+        @*Takes you to the MAIN CONTROLLERS*@
+        @Html.ActionLink("Click me", "Index", new { area = "" })
+    </div>
+    <div>
+        @*Takes you to another area's controller*@
+        @Html.ActionLink("Click me to go to another area fgt(Support, which is non-existant)", "Index", new { area = "Support" })
+    </div>
+</body>
+</html>
