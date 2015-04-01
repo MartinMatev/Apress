@@ -1,0 +1,56 @@
+﻿@model string
+@using HelperMethods.Infrastructure;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = null;
+}
+
+@helper ListOfItems(string[] collection)
+{
+    <ul>
+        @foreach (var item in collection)
+        {
+            <li class="Collections">@item</li>
+        }
+    </ul>
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        li.Collections {
+            /*background-color: aqua;*/
+            border: thin solid black;
+            margin: 10px 0;
+            width: 80px;
+        }
+
+        p.Message {
+            /*background-color: coral;*/
+            margin: 10px 0;
+        }
+    </style>
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        Here are the fruits: @ListOfItems(ViewBag.Fruits)
+    </div>
+    <div>
+        Here are the cities: @ListOfItems(ViewBag.Cities)
+    </div>
+    <p>This is the content from the view:</p>
+    <div style="border: thin solid black; padding: 10px">
+        Here is the message:
+        <p class="Message">@Model</p>
+    </div>
+
+    <p>This is the content from the helper method:</p>
+    <div style="border: thin solid black; padding: 10px;">
+        @Html.DisplayMessage(@Model)
+    </div>
+</body>
+</html>

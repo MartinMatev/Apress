@@ -1,0 +1,58 @@
+﻿@model HelperMethods.Models.Person
+
+@{
+    ViewBag.Title = "CreatePerson";
+    Layout = "/Views/Shared/_Layout.cshtml";
+    Html.EnableClientValidation(false);
+}
+
+<h2>Create Person: @Html.LabelForModel()</h2>
+
+@using (Html.BeginRouteForm("FormRoute", new { }, FormMethod.Post,
+        new { @class = "personClass", data_formType = "person" }))
+{
+    <div class="column">
+        @Html.EditorForModel()
+    </div>
+    <div class="column">
+        @Html.EditorFor(m => m.HomeAddress)
+    </div>
+    @*<div class="dataElem">
+            <label>PersonId</label>
+            @Html.EditorFor(m => m.PersonId)
+        </div>
+        <div class="dataElem">
+            <label>First Name</label>
+            @Html.EditorFor(m => m.FirstName)
+        </div>
+        <div class="dataElem">
+            <label>Last Name</label>
+            @Html.EditorFor(m => m.LastName)
+        </div>
+        <div class="dataElem">
+            <label>Role</label>
+            @Html.EditorFor(m => m.Role)
+        </div>
+        <div class="dataElem">
+            <label>Birth date</label>
+            @Html.EditorFor(m => m.BirthDate)
+        </div>*@
+    <input type="submit" value="Submit" />
+}
+
+@*SAMPLE (MSDN) Html.BeginForm
+    @using (Html.BeginForm("Login", "Account", new { UserId = "5" }, FormMethod.Post, new { Id = "Form1" }))
+    {
+        @Html.TextBox("Name");
+        @Html.Password("Password");
+        <input type="submit" value="Sign In">
+    }
+    // Produces the following form element
+    // <form id="Form1" action="/Account/Login?UserId=5" action="post">*@
+
+@*SAMPLE (current case) Html.BeginForm*@
+@*@using (Html.BeginForm("CreatePerson", "Home",
+        new { id = "MyIdValue" }, FormMethod.Post,
+        new { @class = "personClass", data_formType = "person" }))
+
+    // <form action="/Home/CreatePerson/MyIdValue" class="personClass" data-formType="person" method="post"></form>*@
