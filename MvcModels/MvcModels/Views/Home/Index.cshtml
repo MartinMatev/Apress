@@ -1,0 +1,15 @@
+﻿@model MvcModels.Models.Person
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<div><label>ID:</label>@Html.DisplayFor(x => x.PersonId)</div>
+<div><label>First Name:</label>@Html.DisplayFor(x => x.FirstName)</div>
+<div><label>Last Name:</label>@Html.DisplayFor(x => x.LastName)</div>
+<div><label>Role:</label>@Html.DisplayFor(x => x.Role)</div>
+<div><label>City:</label>@Html.DisplayFor(x => x.HomeAddress.City)</div>
+<div><label>Country:</label>@Html.DisplayFor(x => x.HomeAddress.Country)</div>
+

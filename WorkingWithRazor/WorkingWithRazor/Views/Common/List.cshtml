@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "List";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = null;
+}
+<h3>This is the /Views/Common/List.cshtml View</h3>
+
+<div class="view">My Strongly Typed Partial View below:</div>
+@Html.Partial("MyStronglyTypedPartial", new[] { "Something", "anything", "everything" })
+
+<div class="view">Partial View below:</div>
+@Html.Partial("PartialView")
+
+<div class="view"> Partial controller "Time"</div>
+@Html.Action("Time")
